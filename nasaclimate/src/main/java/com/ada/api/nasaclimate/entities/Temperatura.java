@@ -17,8 +17,6 @@ public class Temperatura {
     @Column(name = "temperatura_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int temperaturaId;
-
-    
     @ManyToOne
     @JoinColumn(name = "pais_id", referencedColumnName = "pais_id")
     private Pais pais;

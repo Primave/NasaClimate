@@ -21,9 +21,7 @@ public class Pais {
     @Id
     @Column(name = "pais_id")
     private int codigoPais;
-
     private String nombre;
-
     @OneToMany(mappedBy = "pais", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JsonIgnore
