@@ -1,10 +1,13 @@
 package com.ada.api.nasaclimate.services;
 
+import java.util.Optional;
+
 import com.ada.api.nasaclimate.entities.Pais;
 import com.ada.api.nasaclimate.repos.PaisRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class PaisService {
@@ -17,6 +20,19 @@ public class PaisService {
     public void crearPais(Pais pais){
         paisRepository.save(pais);
 
+    }
+
+    public Pais traerPaisPorId(int codigoPais) {
+
+        Optional<Pais> eo = paisRepository.findById(codigoPais);
+
+        if(eo.isPresent()){
+            
+            return eo.get();
+        }
+        
+        return null;
+        
     }
 
     

@@ -1,13 +1,16 @@
 package com.ada.api.nasaclimate.controllers;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.persistence.Id;
 
 import com.ada.api.nasaclimate.entities.Pais;
 import com.ada.api.nasaclimate.models.PaisRequest;
 import com.ada.api.nasaclimate.services.PaisService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +31,21 @@ public class PaisController {
         return ResponseEntity.ok(pais);
         
     }
+
+    @GetMapping("/paises/{id}")
+    public ResponseEntity<?> buscarPaisPorId(@PathVariable int codigoPais){
+
+        Pais pais = paisService.traerPaisPorId(codigoPais);
+
+        if (pais != null) {
+            return ResponseEntity.ok(pais);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+    }
+
+    
 
     /**
      * POST /paises : que permita la creación de un país RequestBody:

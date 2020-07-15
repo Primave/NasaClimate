@@ -20,11 +20,11 @@ public class Temperatura {
     @ManyToOne
     @JoinColumn(name = "pais_id", referencedColumnName = "pais_id")
     private Pais pais;
-
     @Column(name = "anio_temperatura")
     private int anioTemperatura;
-
     private Double grado;
+
+    
 
     public int getTemperaturaId() {
         return temperaturaId;
