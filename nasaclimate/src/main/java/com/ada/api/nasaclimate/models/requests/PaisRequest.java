@@ -1,4 +1,4 @@
-package com.ada.api.nasaclimate.models;
+package com.ada.api.nasaclimate.models.requests;
 
 public class PaisRequest {
 
