@@ -40,7 +40,7 @@ public class Temperatura {
 
     public void setPais(Pais pais) {
         this.pais = pais;
-        this.pais.getTemperatura().add(this);
+        this.pais.getTemperaturas().add(this);
     }
 
     public int getAnioTemperatura() {

@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TemperaturaRepository extends JpaRepository <Temperatura, Integer>{
+
+    public Temperatura findById(int temperaturaId);
     
 }

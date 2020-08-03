@@ -1,5 +1,7 @@
 package com.ada.api.nasaclimate.controllers;
 
+import java.util.List;
+
 import com.ada.api.nasaclimate.entities.Pais;
 import com.ada.api.nasaclimate.models.requests.PaisRequest;
 import com.ada.api.nasaclimate.models.responses.GenericResponse;
@@ -34,13 +36,18 @@ public class PaisController {
 
     }
 
+    // get/paises lista de paises sin la temperatura
+    @GetMapping("/paises")
+    public ResponseEntity<List<Pais>> listarPaises() {
+
+        return ResponseEntity.ok(paisService.listarPaises());
+
+    }
+
     @GetMapping("/paises/{id}")
     public ResponseEntity<?> buscarPaisPorId(@PathVariable int codigoPais) {
 
         Pais pais = paisService.traerPaisPorId(codigoPais);
-
-        // TODO Aillin, pienso que entendi esse if. Si el codigo del pais existe, 
-        //exibir en postman el pais, si no traer error not found. Es eso?
 
         if (pais != null) {
             return ResponseEntity.ok(pais);
@@ -51,9 +58,9 @@ public class PaisController {
     }
 
     @PutMapping("/paises/{id}")
-    public ResponseEntity<?> actualizarNombrePais(@PathVariable int codigoPais, @RequestBody Pais paisInfoNueva){
+    public ResponseEntity<?> actualizarNombrePais(@PathVariable int codigoPais, @RequestBody Pais paisInfoNueva) {
 
-        //TODO estiar como hacer put, pues solo tengo ese ejemplo
+        // TODO estiar como hacer put, pues solo tengo ese ejemplo
 
         GenericResponse responseG = new GenericResponse();
 
@@ -80,16 +87,5 @@ public class PaisController {
         }
 
     }
-
-    /**
-     * POST /paises : que permita la creación de un país RequestBody:
-     * 
-     * { “codigoPais”: 32, “nombre”: “Argentina” } GET /paises : que devuelva la
-     * lista de países SIN las temperaturas.
-     * 
-     * GET /paises/{id} : que devuelva la info de un pais en particular(SIN las
-     * temperaturas) PUT /paises/{id} : que actualice solo el nombre del país. Usar
-     * un requestBody que solo tenga el nombre del país.
-     */
 
 }

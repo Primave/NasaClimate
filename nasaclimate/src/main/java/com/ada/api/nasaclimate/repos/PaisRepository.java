@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PaisRepository extends JpaRepository <Pais, Integer>{
+
+    public Pais findByCodigoPais(int codigoPais);
     
 }

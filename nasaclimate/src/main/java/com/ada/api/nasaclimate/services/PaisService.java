@@ -1,5 +1,6 @@
 package com.ada.api.nasaclimate.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.ada.api.nasaclimate.entities.Pais;
@@ -18,6 +19,12 @@ public class PaisService {
     public void crearPais(Pais pais) {
         paisRepository.save(pais);
 
+    }
+
+
+    public List<Pais> listarPaises() {
+
+        return paisRepository.findAll();
     }
 
     public Pais traerPaisPorId(int codigoPais) {

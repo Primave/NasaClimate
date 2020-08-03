@@ -25,7 +25,7 @@ public class Pais {
     @OneToMany(mappedBy = "pais", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JsonIgnore
-    private List<Temperatura> temperatura;
+    private List<Temperatura> temperaturas;
 
 
     public int getCodigoPais() {
@@ -44,12 +44,12 @@ public class Pais {
         this.nombre = nombre;
     }
 
-    public List<Temperatura> getTemperatura() {
-        return temperatura;
+    public List<Temperatura> getTemperaturas() {
+        return temperaturas;
     }
 
-    public void setTemperatura(List<Temperatura> temperatura) {
-        this.temperatura = temperatura;
+    public void setTemperaturas(List<Temperatura> temperaturas) {
+        this.temperaturas = temperaturas;
     }
 
 }
